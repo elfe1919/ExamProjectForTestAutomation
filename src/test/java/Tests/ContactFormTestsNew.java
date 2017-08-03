@@ -40,5 +40,21 @@ public class ContactFormTestsNew extends ParentTest{
 
 
     }
+    @Test
+    public void wrongEmailFormatErrorMessage(){
+        contactFormPage.openContactFormPage();
+        contactFormPage.enterClientNameInContactForm("TestName1");
+        contactFormPage.enterClientEmailInContactForm("testemail@");
+        contactFormPage.selectClientCityFromDDByName("city 3");
+        contactFormPage.enterSubjectIntoContactForm("TestSubject");
+        contactFormPage.enterMessageIntoContactForm("TestMessage");
+        contactFormPage.checkingCheckboxVar3();
+        contactFormPage.clickOnSubmitButton();
+        checkAC("No message appeared",
+                contactFormPage.isElementWithTextPresent("Одно или несколько полей содержат ошибочные данные. Пожалуйста, проверьте их и попробуйте ещё раз")
+                ,true);
+        Assert.assertTrue("ErrorMessage for Field Client Email is not present",
+                contactFormPage.checkErrorMessageForClientEmailField("Неверно введён электронный адрес."));
+    }
 
 }

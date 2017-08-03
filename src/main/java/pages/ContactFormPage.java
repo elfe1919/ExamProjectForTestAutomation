@@ -92,4 +92,6 @@ public class ContactFormPage extends ParentPage {
     public boolean checkErrorMessageForClientCityDD(String text){
         return actionsWithOurElements.checkTextInElementBoolean(".//span[@class= 'wpcf7-form-control-wrap menu-539']//span[@class='wpcf7-not-valid-tip']", text);
     }
+
+
 }
